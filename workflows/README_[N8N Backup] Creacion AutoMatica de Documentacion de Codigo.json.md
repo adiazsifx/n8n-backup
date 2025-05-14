@@ -1,24 +1,23 @@
 ### Análisis del Código
-
-El código proporcionado es un flujo de trabajo de automatización creado con n8n, una herramienta de automatización de flujos de trabajo. A continuación, se describe la función del código y sus partes principales:
+El código proporcionado es un flujo de trabajo automatizado creado en n8n, una herramienta de automatización de flujos de trabajo. A continuación, se describe la función del código y sus partes principales:
 
 #### Función del Código
+El flujo de trabajo está diseñado para crear documentación automática de código en un repositorio de GitHub. Cuando se produce un evento de "push" en el repositorio, el flujo de trabajo se activa y realiza las siguientes acciones:
 
-El flujo de trabajo está diseñado para crear documentación automática de código cuando se produce un evento de "push" en un repositorio de GitHub. El flujo de trabajo utiliza un desencadenador de GitHub para detectar cambios en el repositorio y, posteriormente, utiliza un modelo de lenguaje de inteligencia artificial (AI) para generar documentación basada en el código modificado.
+1. **Obtiene información del commit**: Utiliza el nodo "GitHub Trigger" para obtener información sobre el commit que desencadenó el flujo de trabajo.
+2. **Obtiene el archivo modificado**: Utiliza el nodo "GitHub" para obtener el archivo modificado en el commit.
+3. **Genera documentación**: Utiliza el nodo "AI Agent" para generar documentación del código en formato Markdown.
+4. **Crea o actualiza el archivo de documentación**: Utiliza el nodo "GitHub1" o "GitHub3" para crear o actualizar un archivo de documentación en el repositorio de GitHub.
 
 #### Partes del Código
+Las partes principales del código son:
 
-*   **Desencadenador de GitHub (Github Trigger)**: Detecta eventos de "push" en el repositorio especificado y desencadena el flujo de trabajo.
-*   **Nodo de GitHub (GitHub)**: Obtiene el archivo modificado del repositorio de GitHub.
-*   **Agente de AI (AI Agent)**: Utiliza un modelo de lenguaje de inteligencia artificial para generar documentación basada en el código modificado.
-*   **Nodo de GitHub para editar archivo (GitHub1 y GitHub3)**: Edita o crea un archivo de documentación en el repositorio de GitHub con la documentación generada por el agente de AI.
+* **Nodos**:
+ + "GitHub Trigger": desencadena el flujo de trabajo cuando se produce un evento de "push" en el repositorio.
+ + "GitHub": obtiene información sobre el commit y el archivo modificado.
+ + "AI Agent": genera documentación del código.
+ + "GitHub1" y "GitHub3": crean o actualizan el archivo de documentación en el repositorio.
+* **Conexiones**: establecen la relación entre los nodos y determinan el flujo de datos entre ellos.
+* **Configuración**: establece la configuración general del flujo de trabajo, como el orden de ejecución y la gestión de errores.
 
-#### Conexiones entre los Nodos
-
-Los nodos están conectados de la siguiente manera:
-
-1.  El desencadenador de GitHub se conecta al nodo de GitHub.
-2.  El nodo de GitHub se conecta al nodo de extracción de archivo (Extract from File), aunque en este caso específico, parece haber una conexión directa con el agente de AI a través de otros nodos.
-3.  El agente de AI se conecta a los nodos de GitHub que editan o crean archivos (GitHub1 y GitHub3), aunque la conexión directa se establece a través de GitHub2.
-
-En resumen, este flujo de trabajo de n8n automatiza la generación de documentación de código cuando se producen cambios en un repositorio de GitHub, utilizando inteligencia artificial para analizar el código modificado y crear documentación relevante.
+En resumen, el código es un flujo de trabajo automatizado que genera documentación de código en un repositorio de GitHub cuando se produce un evento de "push". Utiliza nodos y conexiones para obtener información del commit, generar documentación y crear o actualizar un archivo de documentación en el repositorio.
