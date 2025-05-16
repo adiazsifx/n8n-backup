@@ -1,29 +1,24 @@
-### Introducción
-El código proporcionado es un flujo de trabajo de automatización creado con n8n, una herramienta de integración y automatización de procesos. El flujo de trabajo parece estar diseñado para analizar el sentimiento de los clientes en función de los tickets de soporte que envían.
+### Análisis del Código
+El código proporcionado es un flujo de trabajo en n8n, una plataforma de automatización de procesos. A continuación, se describe la función del código y sus partes principales:
 
-### Partes del Código
-A continuación, se presentan las partes principales del código:
+#### Función del Código
+El flujo de trabajo está diseñado para analizar el sentimiento de los tickets de soporte técnico y enviar correos electrónicos con el resultado del análisis.
 
-1. **Webhook**: Recibe los datos del ticket de soporte a través de una solicitud HTTP POST.
-2. **ValidoJson**: Valida la estructura del JSON recibido para asegurarse de que contenga los campos necesarios.
-3. **Code**: Extrae los datos relevantes del ticket, como el número de ticket, el cliente y el historial de interacciones.
-4. **Sentiment Analysis**: Analiza el sentimiento del cliente en función del texto del ticket utilizando un modelo de lenguaje natural.
-5. **AI Agent**: Genera un análisis del sentimiento y proporciona recomendaciones para mejorar el sentimiento del cliente.
-6. **Formato de Salida**: Formatea los resultados del análisis de sentimiento y las recomendaciones en un formato adecuado para su almacenamiento o envío.
-7. **Postgres**: Almacena los resultados del análisis de sentimiento en una base de datos PostgreSQL.
-8. **Send Email**: Envía un correo electrónico con los resultados del análisis de sentimiento y las recomendaciones al equipo de soporte.
+#### Partes del Código
+* **Webhook**: Recibe los datos del ticket de soporte técnico.
+* **ValidoJson**: Valida la estructura del JSON recibido.
+* **Code**: Procesa los datos del ticket y crea un markdown con la información del ticket.
+* **Sentiment Analysis**: Analiza el sentimiento del texto del ticket.
+* **AI Agent**: Genera recomendaciones para mejorar el sentimiento del cliente.
+* **Formato de Salida**: Formatea la salida del análisis de sentimiento.
+* **Postgres**: Guarda el resultado del análisis en una base de datos.
+* **Send Email**: Envía un correo electrónico con el resultado del análisis.
 
-### Funcionamiento
-El flujo de trabajo funciona de la siguiente manera:
-
-1. El Webhook recibe los datos del ticket de soporte.
-2. El ValidoJson valida la estructura del JSON recibido.
-3. El Code extrae los datos relevantes del ticket.
-4. El Sentiment Analysis analiza el sentimiento del cliente.
-5. El AI Agent genera un análisis del sentimiento y proporciona recomendaciones.
-6. El Formato de Salida formatea los resultados del análisis de sentimiento y las recomendaciones.
-7. El Postgres almacena los resultados del análisis de sentimiento en la base de datos.
-8. El Send Email envía un correo electrónico con los resultados del análisis de sentimiento y las recomendaciones.
-
-### Resumen
-En resumen, el código es un flujo de trabajo de automatización que analiza el sentimiento de los clientes en función de los tickets de soporte y proporciona recomendaciones para mejorar el sentimiento del cliente. El flujo de trabajo utiliza una combinación de modelos de lenguaje natural y técnicas de procesamiento de texto para analizar el sentimiento del cliente y generar recomendaciones.
+#### Conexiones
+El flujo de trabajo tiene varias conexiones entre los nodos, que permiten el flujo de datos entre ellos. Los nodos están conectados de la siguiente manera:
+* **Webhook** → **ValidoJson**
+* **ValidoJson** → **Code** o **ErrorJsonOutput** (dependiendo del resultado de la validación)
+* **Code** → **Sentiment Analysis**
+* **Sentiment Analysis** → **AI Agent**
+* **AI Agent** → **Formato de Salida**
+* **Formato de Salida** → **Postgres** y **Send Email**
