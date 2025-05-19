@@ -1,13 +1,16 @@
-### Análisis del Código
-El código proporcionado es un flujo de trabajo en n8n, una plataforma de automatización. A continuación, se resume su función y partes principales:
+### Resumen del Código
+El código es un flujo de trabajo de automatización creado con n8n, diseñado para detectar sentimientos negativos en chats de soporte y generar alertas personalizadas.
 
-#### Función
-El flujo de trabajo parece diseñarse para detectar sentimientos negativos en interacciones de chat y generar alertas personalizadas basadas en el análisis de estos sentimientos.
+### Partes del Código
+* **Postgres**: Conecta a una base de datos PostgreSQL para obtener mensajes de chats.
+* **Split Out**: Divide los datos obtenidos en partes manejables.
+* **Loop Over Items**: Recorre cada parte de los datos y aplica análisis de sentimiento.
+* **Sentiment Analysis**: Analiza el sentimiento de los mensajes utilizando un modelo de lenguaje.
+* **OpenAI Chat Model**: Utiliza un modelo de lenguaje para generar texto basado en el análisis de sentimiento.
+* **AI Agent**: Genera un JSON con la información del sentimiento negativo detectado.
+* **Code**: Transforma el JSON en un formato adecuado para la generación de la alerta.
+* **HTML**: Crea una plantilla HTML para la alerta de sentimiento negativo.
+* **Trigger**: El flujo de trabajo se inicia cuando se hace clic en "Test workflow".
 
-#### Partes Principales
-- **Inicio**: Comienza con un disparador manual (`When clicking ‘Test workflow’`).
-- **Consulta a Base de Datos**: Utiliza un nodo `Postgres` para consultar una base de datos y obtener mensajes de chat.
-- **Análisis de Sentimiento**: Aplica un análisis de sentimiento utilizando `Sentiment Analysis` sobre los mensajes obtenidos.
-- **Procesamiento de Datos**: Utiliza nodos como `Split Out`, `Loop Over Items`, y `Code` para procesar y transformar los datos obtenidos del análisis de sentimiento.
-- **Generación de Alertas**: Finalmente, utiliza un nodo `HTML` para generar alertas en formato HTML basadas en los resultados del análisis.
-- **Integración con IA**: Incorpora modelos de lenguaje de IA (`OpenAI Chat Model` y `AI Agent`) para una mayor comprensión y procesamiento de los mensajes.
+### Función del Código
+El código detecta sentimientos negativos en chats de soporte, analiza el contexto y la gravedad del sentimiento, y genera una alerta personalizada con la información relevante.
