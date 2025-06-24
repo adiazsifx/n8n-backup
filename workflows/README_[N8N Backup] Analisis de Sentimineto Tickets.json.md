@@ -1,17 +1,20 @@
-### Análisis del Código
-El código proporcionado es un flujo de trabajo en n8n, una plataforma de automatización de procesos. A continuación, se describe la función del código y sus partes principales:
+### Resumen del Código
+El código es un flujo de trabajo en n8n que analiza el sentimiento de un ticket de soporte. El flujo consta de varios nodos que se encargan de:
 
-#### Función del Código
-El código analiza el sentimiento de los tickets de un sistema de gestión de incidentes y envía correos electrónicos con el resultado del análisis.
+* Recibir el ticket a través de un webhook
+* Validar el formato del ticket
+* Analizar el sentimiento del ticket utilizando un modelo de lenguaje
+* Generar un resumen y recomendaciones basadas en el análisis de sentimiento
+* Enviar un correo electrónico con el resumen y recomendaciones
 
-#### Partes del Código
-* **Webhook**: Recibe los datos del ticket.
-* **ValidoJson**: Valida el formato del JSON recibido.
-* **Code**: Procesa los datos del ticket y crea un markdown con la información del ticket.
-* **Sentiment Analysis**: Analiza el sentimiento del texto del ticket.
-* **AI Agent**: Genera recomendaciones para mejorar el sentimiento del cliente.
-* **Formato de Salida**: Formatea la salida del análisis de sentimiento.
-* **Switch**: Envía correos electrónicos con el resultado del análisis de sentimiento según la categoría del sentimiento (positivo, neutral o negativo).
-* **Send Email**: Envía los correos electrónicos con el resultado del análisis de sentimiento.
+### Partes del Código
+* **Webhook**: Recibe el ticket de soporte
+* **ValidoJson**: Valida el formato del ticket
+* **Code**: Analiza el sentimiento del ticket y genera un resumen y recomendaciones
+* **AI Agent**: Utiliza un modelo de lenguaje para analizar el sentimiento del ticket
+* **Switch**: Determina si el sentimiento es positivo, neutral o negativo
+* **HTML1**: Genera un correo electrónico con el resumen y recomendaciones
+* **Email Neutro**: Envia el correo electrónico
 
-En resumen, el código analiza el sentimiento de los tickets, genera recomendaciones y envía correos electrónicos con el resultado del análisis.
+### Función del Código
+El código analiza el sentimiento de un ticket de soporte y genera un resumen y recomendaciones basadas en el análisis. El flujo de trabajo utiliza un modelo de lenguaje para analizar el sentimiento del ticket y determina si el sentimiento es positivo, neutral o negativo. Luego, genera un correo electrónico con el resumen y recomendaciones y lo envía al destinatario correspondiente.
